@@ -56,7 +56,7 @@
                         <img src="img/logo.png" class="img-fluid">
                     </div>
                     <div class="row col-12 col-md-6 align-items-center justify-content-center">
-                        <a role="button" class="btn btn-warning btn-sm p-2" href="#" data-toggle="modal"
+                        <a role="button" class="btn btn-warning btn-md px-4" href="#" data-toggle="modal"
                             data-target="#bookTableModal">Reserve
                             Table</a>
                     </div>
@@ -120,6 +120,9 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span id="carousel-button-icon" class="fa fa-pause"></span>
+                    </button>
                 </div>
 
 
@@ -188,70 +191,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="row row-content align-items-center" id="table-reservation">
-            <div class="card col-12 col-sm-8 p-0 m-auto">
-                <h3 class="card-header text-white bg-warning">Reserve a Table</h3>
-                <div class="card-body">
-                    <div>
-                        <div class="form-group row">
-                            <p class="col-md-3 col-form-label">Number of Guests</p>
-                            <div class="col-md-9">
-                                <div class="radio d-inline">
-                                    <label class="m-1"><input type="radio" name="optradio">1</label>
-                                </div>
-                                <div class="radio d-inline">
-                                    <label class="m-1"><input type="radio" name="optradio">2</label>
-                                </div>
-                                <div class="radio d-inline">
-                                    <label class="m-1"><input type="radio" name="optradio">3</label>
-                                </div>
-                                <div class="radio d-inline">
-                                    <label class="m-1"><input type="radio" name="optradio">4</label>
-                                </div>
-                                <div class="radio d-inline">
-                                    <label class="m-1"><input type="radio" name="optradio">5</label>
-                                </div>
-                                <div class="radio d-inline">
-                                    <label class="m-1"><input type="radio" name="optradio">6</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <p class="col-md-3 col-form-label">Section</p>
-                            <div class="col-md-9">
-
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-success">
-                                        <input type="radio" name="nonsmoking" id="nonSmoking"> Non-Smoking
-                                    </label>
-                                    <label class="btn btn-danger">
-                                        <input type="radio" name="smoking" id="smoking"> Smoking
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <p class="col-12 col-md-3">Date and Time</p>
-                            <div class="col-12 col-md-9 p-0">
-                                <div class="col-md-5 d-inline-block">
-                                    <input type="text" class="form-control" id="date" name="date" placeholder="Date">
-                                </div>
-                                <div class="col-md-5 d-inline-block">
-                                    <input type="text" class="form-control" id="time" name="time" placeholder="Time">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="offset-md-3">
-                            <button type="button" class="btn btn-primary">Reserve</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
     <footer class="footer">
@@ -348,7 +287,8 @@
 
                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                             <label class="btn btn-success">
-                                                <input type="radio" name="nonsmoking" id="nonSmoking" checked> Non-Smoking
+                                                <input type="radio" name="nonsmoking" id="nonSmoking" checked>
+                                                Non-Smoking
                                             </label>
                                             <label class="btn btn-danger">
                                                 <input type="radio" name="smoking" id="smoking"> Smoking
@@ -387,6 +327,22 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#mycarousel").carousel({ interval: 2000 });
+            $("#carouselButton").click(function () {
+                if ($("#carouselButton").children("span").hasClass('fa-pause')) {
+                    $("#mycarousel").carousel('pause');
+                    $("#carouselButton").children("span").removeClass('fa-pause').addClass('fa-play');
+                }
+                else if ($("#carouselButton").children("span").hasClass('fa-play')) {
+                    $("#mycarousel").carousel('cycle');
+                    $("#carouselButton").children("span").removeClass('fa-play').addClass('fa-pause');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
